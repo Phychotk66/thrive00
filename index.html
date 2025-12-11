@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrive Women Veteran Summit</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #8B5FC7;
+            --deep-purple: #4a2c6d;
+            --primary-gold: #DAA520;
+            --bright-gold: #FFD700;
+            --glass-white: rgba(255, 255, 255, 0.08);
+            --text-white: #FFFFFF;
+            --text-gold: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-white);
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1a0033, #2d1b4e, #6b4499, #8b5fc7);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Background animated elements */
+        .bg-element {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.2) 0%, rgba(218, 165, 32, 0) 70%);
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .bg-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .bg-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .bg-element:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            50% {
+                transform: translateY(10px) translateX(-10px);
+            }
+            75% {
+                transform: translateY(-10px) translateX(5px);
+            }
+        }
+
+        /* Glassmorphism utility */
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Premium Glass Card */
+        .premium-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .premium-glass:hover::before {
+            left: 100%;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 800px;
+            z-index: 1000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        nav:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.ibb.co.com/4npWNsLg/Gemini-Generated-Image-r1iosrr1iosrr1io.png') no-repeat center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--primary-gold), var(--bright-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .date-badge {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            animation: fadeIn 1.4s ease-out;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-gold));
+        }
+
+        /* Schedule Section */
+        .schedule-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .schedule-card {
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-gold);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-left-color: var(--bright-gold);
+        }
+
+        .day-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-gold);
+            min-width: 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .day-number::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: var(--primary-gold);
+        }
+
+        .schedule-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--text-gold);
+        }
+
+        .schedule-time {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .schedule-time i {
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+        }
+
+        /* Speakers Section */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .speaker-card {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .speaker-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-gold));
+        }
+
+        .speaker-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--primary-gold);
+        }
+
+        .speaker-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-gold);
+            position: relative;
+        }
+
+        .speaker-photo::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            z-index: -1;
+        }
+
+        .speaker-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-gold);
+        }
+
+        .speaker-title {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        /* Testimonials Section */
+        .testimonials-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-gold);
+            background: rgba(255, 255, 255, 0.12);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 4rem;
+            color: rgba(255, 215, 0, 0.2);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            padding-left: 20px;
+        }
+
+        .testimonial-author {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--text-gold);
+        }
+
+        .testimonial-rank {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Location Section */
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .location-card {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.ibb.co.com/G45b6xjR/Jan-26-Expo.jpg') no-repeat center;
+            background-size: cover;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-gold);
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .location-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-gold);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            text-align: center;
+        }
+
+        .gallery-caption {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--text-gold);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .photo-placeholder {
+            height: 150px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-placeholder:hover img {
+            transform: scale(1.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-gold));
+            color: var(--text-white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-gold));
+        }
+
+        .footer-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-gold);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
+
+    <!-- Navigation -->
+    <nav class="glass">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <i class="material-icons">military_tech</i>
+            </div>
+            <div class="logo">THRIVE</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+            <i class="material-icons">menu</i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">THRIVE</h1>
+        <h2 class="hero-subtitle">WOMEN VETERAN SUMMIT</h2>
+        <div class="date-badge glass">
+            March 15-17, 2025 | Washington, D.C.
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule">
+        <h2 class="section-title">Summit Schedule</h2>
+        <div class="schedule-cards">
+            <div class="schedule-card premium-glass">
+                <div class="day-number">01</div>
+                <div class="schedule-content">
+                    <h3>Leadership & Legacy</h3>
+                    <div class="schedule-time">
+                        <i class="material-icons">schedule</i>
+                        9:00 AM - 5:00 PM
+                    </div>
+                    <p>Opening ceremonies with distinguished military leaders, panel discussions on career advancement, and networking opportunities with industry executives.</p>
+                </div>
+            </div>
+            <div class="schedule-card premium-glass">
+                <div class="day-number">02</div>
+                <div class="schedule-content">
+                    <h3>Innovation & Impact</h3>
+                    <div class="schedule-time">
+                        <i class="material-icons">schedule</i>
+                        9:00 AM - 5:00 PM
+                    </div>
+                    <p>Workshops on entrepreneurship, technology integration in veteran services, and breakout sessions focused on personal and professional growth.</p>
+                </div>
+            </div>
+            <div class="schedule-card premium-glass">
+                <div class="day-number">03</div>
+                <div class="schedule-content">
+                    <h3>Community & Celebration</h3>
+                    <div class="schedule-time">
+                        <i class="material-icons">schedule</i>
+                        9:00 AM - 8:00 PM
+                    </div>
+                    <p>Resource fair, mentorship matching, awards ceremony honoring outstanding women veterans, and formal gala dinner with keynote speakers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakers">
+        <h2 class="section-title">Featured Speakers</h2>
+        <div class="speakers-grid">
+            <div class="speaker-card premium-glass">
+                <img src="https://sfile.chatglm.cn/images-ppt/c98648b1e636.png" alt="Speaker" class="speaker-photo">
+                <h3 class="speaker-name">Admiral Michelle Howard</h3>
+                <p class="speaker-title">Retired U.S. Navy, First Female Four-Star Admiral</p>
+                <p>Breaking barriers throughout her 35-year career, Admiral Howard shares insights on leadership in challenging environments.</p>
+            </div>
+            <div class="speaker-card premium-glass">
+                <img src="https://sfile.chatglm.cn/images-ppt/6ad49c565b3a.jpg" alt="Speaker" class="speaker-photo">
+                <h3 class="speaker-name">Colonel Jennifer Pritzker</h3>
+                <p class="speaker-title">Retired U.S. Army, Philanthropist</p>
+                <p>Founder of the Pritzker Military Museum & Library, Colonel Pritzker discusses preserving military history and supporting veteran communities.</p>
+            </div>
+            <div class="speaker-card premium-glass">
+                <img src="https://sfile.chatglm.cn/images-ppt/1f51d5e72736.jpg" alt="Speaker" class="speaker-photo">
+                <h3 class="speaker-name">Brigadier General Anne Macdonald</h3>
+                <p class="speaker-title">U.S. Army Reserve, Director of the VA Center for Women Veterans</p>
+                <p>Leading initiatives to improve healthcare and services for women veterans, General Macdonald shares the latest developments in veteran support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card premium-glass">
+                <p class="testimonial-text">"The Thrive Summit transformed my career trajectory. The connections I made and the insights I gained have been invaluable in my transition to civilian leadership."</p>
+                <p class="testimonial-author">Captain Sarah Mitchell</p>
+                <p class="testimonial-rank">U.S. Navy (Retired)</p>
+            </div>
+            <div class="testimonial-card premium-glass">
+                <p class="testimonial-text">"After 20 years of service, I wasn't sure what came next. This summit provided clarity, community, and concrete opportunities that have propelled my second career."</p>
+                <p class="testimonial-author">Major Amanda Rodriguez</p>
+                <p class="testimonial-rank">U.S. Marine Corps (Retired)</p>
+            </div>
+            <div class="testimonial-card premium-glass">
+                <p class="testimonial-text">"The sense of belonging and empowerment I experienced at Thrive was life-changing. I left with not just professional contacts, but lifelong friends and mentors."</p>
+                <p class="testimonial-author">Lt. Colonel Jennifer Park</p>
+                <p class="testimonial-rank">U.S. Air Force (Retired)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <h2 class="section-title">Location & Accommodations</h2>
+        <div class="location-grid">
+            <div class="location-card premium-glass">
+                <div class="location-icon">
+                    <i class="material-icons">location_city</i>
+                </div>
+                <h3 class="location-title">Venue</h3>
+                <p>The National Harbor</p>
+                <p>150 Waterfront Street</p>
+                <p>Oxon Hill, MD 20745</p>
+                <p>State-of-the-art conference facility with panoramic views of the Potomac River</p>
+            </div>
+            <div class="location-card premium-glass">
+                <div class="location-icon">
+                    <i class="material-icons">hotel</i>
+                </div>
+                <h3 class="location-title">Hotel Block</h3>
+                <p>Gaylord National Resort</p>
+                <p>Special rate: $189/night</p>
+                <p>Book by February 15, 2025</p>
+                <p>Code: THRIVE2025</p>
+                <p>Complimentary shuttle to summit venue</p>
+            </div>
+            <div class="location-card premium-glass">
+                <div class="location-icon">
+                    <i class="material-icons">directions_transit</i>
+                </div>
+                <h3 class="location-title">Transportation</h3>
+                <p>Reagan National Airport: 15 minutes</p>
+                <p>Dulles International: 45 minutes</p>
+                <p>BWI Airport: 60 minutes</p>
+                <p>Complimentary airport shuttle for VIP attendees</p>
+                <p>Metro accessible: Green Line</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <h2 class="section-title">Past Events Gallery</h2>
+        <p class="gallery-caption">5,000+ Veterans Served Since 2018</p>
+        <div class="photo-grid">
+            <div class="photo-placeholder">
+                <img src="https://sfile.chatglm.cn/images-ppt/35092f1929a1.jpg" alt="Event Photo 1">
+            </div>
+            <div class="photo-placeholder">
+                <img src="https://sfile.chatglm.cn/images-ppt/c6f88d51251d.jpg" alt="Event Photo 2">
+            </div>
+            <div class="photo-placeholder">
+                <img src="https://sfile.chatglm.cn/images-ppt/ee65d9dd09d6.jpg" alt="Event Photo 3">
+            </div>
+            <div class="photo-placeholder">
+                <img src="https://sfile.chatglm.cn/images-ppt/03873671faa0.jpg" alt="Event Photo 4">
+            </div>
+            <div class="photo-placeholder">
+                <img src="https://sfile.chatglm.cn/images-ppt/f571d14ca80c.jpg" alt="Event Photo 5">
+            </div>
+            <div class="photo-placeholder">
+                <img src="https://sfile.chatglm.cn/images-ppt/3e6a81cab419.jpg" alt="Event Photo 6">
+            </div>
+            <div class="photo-placeholder">
+                <img src="https://sfile.chatglm.cn/images-ppt/9ae223a99a0d.jpg" alt="Event Photo 7">
+            </div>
+            <div class="photo-placeholder">
+                <img src="https://sfile.chatglm.cn/images-ppt/a963a8fe74e9.jpg" alt="Event Photo 8">
+            </div>
+        </div>
+        <a href="#" class="cta-button">REGISTER NOW</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-tagline">Honoring Service • Empowering Women • Building Community</p>
+        <p class="copyright">© 2025 Thrive Women Veteran Summit. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
